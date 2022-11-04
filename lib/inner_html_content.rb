@@ -7,7 +7,6 @@ module InnerHTMLContent
     def add_content(title, content, bypass_html: true, file_name: 'index.html')
       @title = title
       @content = content
-      @stylesheet_path = stylesheet_path
 
       serialize_content = @content.gsub(%r{<\w+>|</\w+>}, '')
       @content = bypass_html && serialize_content ? @content.gsub(%r{<\w+>|</\w+>}, '') : @content
