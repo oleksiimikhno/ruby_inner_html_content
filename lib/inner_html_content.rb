@@ -16,8 +16,22 @@ module InnerHTMLContent
 
     private
 
+    def template
+      '<!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= @title %></title>
+      </head>
+      <body>
+      <%= @content %>
+      </body>
+      </html>'.gsub(/^      /, '')
+    end
+
     def create_html(file_name)
-      template = File.read('view/template.erb')
       result = ERB.new(template).result(binding)
 
       File.write(file_name, result)
