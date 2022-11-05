@@ -36,6 +36,7 @@ module InnerHTMLContent
       result = ERB.new(template).result(binding)
 
       File.write(file_name, result)
+      result
     end
   end
 end
