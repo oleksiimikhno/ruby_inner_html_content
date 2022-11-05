@@ -4,7 +4,7 @@ require 'erb'
 # Gem append content in html body
 module InnerHTMLContent
   class << self
-    def add_content(title, content, style_path: 'css/default.css', bypass_html: true, file_name: 'index.html')
+    def add_content(title, content, style_path = 'css/default.css', bypass_html: true, file_name: 'index.html')
       @title = title
       @content = content
       @style_path = style_path
