@@ -4,9 +4,10 @@ require 'erb'
 # Gem append content in html body
 module InnerHTMLContent
   class << self
-    def add_content(title, content, bypass_html: true, file_name: 'index.html')
+    def add_content(title, content, style_path: 'css/default.css', bypass_html: true, file_name: 'index.html')
       @title = title
       @content = content
+      @style_path = style_path
 
       serialize_content = @content.gsub(%r{<\w+>|</\w+>}, '')
       @content = bypass_html && serialize_content ? @content.gsub(%r{<\w+>|</\w+>}, '') : @content
@@ -24,7 +25,7 @@ module InnerHTMLContent
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%= @title %></title>
-        <link rel="stylesheet" href="view/style/default.css" />
+        <link rel="stylesheet" href="<%= @style_path %> />
       </head>
       <body>
       <%= @content %>
