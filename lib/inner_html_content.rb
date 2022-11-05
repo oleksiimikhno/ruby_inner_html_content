@@ -33,10 +33,10 @@ module InnerHTMLContent
     end
 
     def create_html(file_name)
-      result = ERB.new(template).result(binding)
+      render_template = ERB.new(template).result(binding)
 
-      File.write(file_name, result)
-      result
+      File.write(file_name, render_template)
+      render_template
     end
   end
 end
